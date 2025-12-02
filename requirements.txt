@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+celery[redis]
+redis
+playwright
+tenacity
+pydantic
+python-multipart
+requests
