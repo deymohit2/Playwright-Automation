@@ -1,0 +1,25 @@
+{
+  "name": "legal-automation-dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "forwardPorts": [8000, 5555],
+  "postCreateCommand": "python -m pip install --upgrade pip && pip install -r requirements.txt && playwright install --with-deps",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "runServices": ["redis"],
+  "service": "workspace",
+  "shutdownAction": "stopCompose"
+}
